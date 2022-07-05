@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <v-data-table v-if="headers" :headers="headers" :items="displayableData" :items-per-page="10" class="elevation-2" calculate-widths="true">
+  <v-container>
+    <v-data-table v-if="headers" :headers="headers" :items="displayableData" class="elevate-5" :items-per-page="10">
       <template v-slot:body="props">
         <tr v-for="(item, i) in props.items" :key="i">
           <td v-for="(headeritem, idx) in headers" :key="idx">{{ item[headeritem.value] }}</td>
@@ -8,7 +8,7 @@
       </template>
     </v-data-table>
     <h3 v-else>No Results to Display</h3>
-  </div>
+  </v-container>
 </template>
 <script lang="ts">
 import Vue from 'vue';
@@ -48,3 +48,9 @@ export default class ResultComponent extends Vue {
   }
 }
 </script>
+<style>
+.v-data-table__wrapper > table {
+  border-spacing: 10px !important;
+  border-collapse: separate;
+}
+</style>

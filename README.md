@@ -15,6 +15,9 @@ The page render takes around 1.25 secs. I measured it using Lighthouse in the ch
 As part of performance improvements I did optimise the components to not cause a lot of rerenders. More could be done on reducing the bundle size.
 
 
+### Hosted Application Link
 
+
+https://62c423bde86c324febc49b58--resplendent-figolla-a6020a.netlify.app/
 
 

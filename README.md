@@ -1,24 +1,20 @@
-# sql-parser
+# Sql Parser
 
-## Project setup
-```
-npm install
-```
+#Introduction about the project
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+This is a web application to enable a user to query a SQL DB. A user can either type the query or Select it from a prefilled list.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+#Major Plugins/Libraries
 
-### Lints and fixes files
-```
-npm run lint
-```
+I chose Vue.js for the front end and used Vuetify as the UI library.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+#Performance
+
+The page render takes around 1.25 secs. I measured it using Lighthouse in the chrome dev tools.
+
+As part of performance improvements I did optimise the components to not cause a lot of rerenders. More could be done on reducing the bundle size.
+
+
+
+
+

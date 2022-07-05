@@ -1,19 +1,12 @@
 <template>
   <div>
-    <v-simple-table v-if="headers">
-      <template v-slot:default>
-        <thead>
-          <tr>
-            <th v-for="(item, i) in headers" :key="i" class="text-left">{{ item }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(item, i) in displayableData" :key="i">
-            <td v-for="(headeritem, idx) in headers" :key="idx">{{ item[headeritem] }}</td>
-          </tr>
-        </tbody>
+    <v-data-table v-if="headers" :headers="headers" :items="displayableData" :items-per-page="10" class="elevation-2" calculate-widths="true">
+      <template v-slot:body="props">
+        <tr v-for="(item, i) in props.items" :key="i">
+          <td v-for="(headeritem, idx) in headers" :key="idx">{{ item[headeritem.value] }}</td>
+        </tr>
       </template>
-    </v-simple-table>
+    </v-data-table>
     <h3 v-else>No Results to Display</h3>
   </div>
 </template>
@@ -41,7 +34,16 @@ export default class ResultComponent extends Vue {
   }
 
   get headers() {
-    if (this.displayableData) return Object.keys(this.displayableData[0]);
+    if (this.displayableData) {
+      return Object.keys(this.displayableData[0]).map((x) => ({
+        text:
+          x
+            .replace(/([A-Z])/g, ' $1')
+            .charAt(0)
+            .toUpperCase() + x.replace(/([A-Z])/g, ' $1').slice(1),
+        value: x,
+      }));
+    }
     return null;
   }
 }

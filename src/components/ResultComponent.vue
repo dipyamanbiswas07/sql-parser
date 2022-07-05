@@ -25,7 +25,9 @@ export default class ResultComponent extends Vue {
 
   mounted() {
     if (this.query.toLowerCase().includes('emp')) {
-      this.displayableData = employees;
+      if (this.query.toLowerCase().includes('where')) {
+        this.displayableData = employees.filter((x) => x.employeeID === 2);
+      } else this.displayableData = employees;
     } else if (this.query.toLowerCase().includes('customer')) {
       this.displayableData = customers;
     } else if (this.query.toLowerCase().includes('order')) {
